@@ -1,0 +1,2 @@
+# earthquake-detection
+earthquake detection
