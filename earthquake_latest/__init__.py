@@ -25,28 +25,43 @@ def ekstrak_data():
         tanggal = datetime.text.split(', ')[0]
         waktu = datetime.text.split(', ')[1]
 
+    result = soup.find('ul', {'class': 'list-unstyled'})
+    data = result.findChildren('li')
+    wektu = data[0].text
+    magnitudo=data[1].text
+    kedalaman=data[2].text
+    lokasi=data[3].text
+    pusat=data[4].text
+    dirasakan=data[5].text
+
+    # print(result)
+
+
+
     data_gempa = dict()
     data_gempa['tanggal'] = tanggal
     data_gempa['waktu'] = waktu
-    data_gempa['magnitudo'] = '4.1'
-    data_gempa['kedalaman'] = '10 km'
-    data_gempa['lokasi'] = '8.20 LS - 115.50 BT'
-    data_gempa['pusat'] = 'Pusat gempa berada di darat 16 km barat laut Karangasem'
-    data_gempa['dirasakan'] = 'Dirasakan (Skala MMI): II Karangasem'
+    data_gempa['magnitudo'] = magnitudo
+    data_gempa['kedalaman'] = kedalaman
+    data_gempa['lokasi'] = lokasi
+    data_gempa['pusat'] = pusat
+    data_gempa['dirasakan'] = dirasakan
     return data_gempa
+
+
 
 def show_data(result):
     if result is None:
         print("Tidak ketemu woy")
         return
     print('Data Gempa terakhir BMKG :')
-    print(f"Tanggal {result['tanggal']}")
-    print(f"Waktu {result['waktu']}")
-    print(f"Magnitudo {result['magnitudo']}")
-    print(f"Kedalaman {result['kedalaman']}")
-    print(f"Lokasi {result['lokasi']}")
-    print(f"Pusat Gempa {result['pusat']}")
-    print(f"Dirasakan {result['dirasakan']}")
+    print(f"Tanggal = {result['tanggal']}")
+    print(f"Waktu = {result['waktu']}")
+    print(f"Magnitudo = {result['magnitudo']}")
+    print(f"Kedalaman = {result['kedalaman']}")
+    print(f"Lokasi = {result['lokasi']}")
+    print(f"Pusat Gempa = {result['pusat']}")
+    print(f"Dirasakan = {result['dirasakan']}")
 
 if __name__ == '__main__':
     print('Package latest gempa')
